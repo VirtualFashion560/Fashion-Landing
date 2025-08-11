@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fitted Threads Landing Page</title>
+
+<!-- Animate.css -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,900&family=Roboto&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+body {
+margin: 0;
+min-height: 100vh;
+background: linear-gradient(135deg, #5a2a27, #7b3f2f);
+color: #fdf3e7;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-family: 'Roboto', sans-serif;
+text-align: center;
+padding: 20px;
+position: relative;
+overflow: hidden;
+}
+
+/* Background animated text */
+.background-container {
+position: absolute;
+top: 50%;
+left: 50%;
+width: max-content;
+transform-origin: center;
+transform: translate(-50%, -50%) rotate(-8deg);
+font-family: 'Playfair Display', serif;
+font-weight: 900;
+font-size: 10rem;
+line-height: 1;
+white-space: nowrap;
+text-align: center;
+color: rgba(255, 183, 77, 0.08);
+animation: moveText 18s linear infinite, colorShift 12s ease-in-out infinite alternate;
+pointer-events: none;
+z-index: 0;
+}
+
+/* Animate text moving right → left */
+@keyframes moveText {
+0% { left: 100%; }
+100% { left: -100%; }
+}
+
+/* Autumn color shifts */
+@keyframes colorShift {
+0% { color: rgba(255, 183, 77, 0.08); } /* pumpkin orange */
+25% { color: rgba(198, 93, 61, 0.08); } /* burnt sienna */
+50% { color: rgba(255, 221, 148, 0.08); } /* golden wheat */
+75% { color: rgba(156, 39, 6, 0.08); } /* deep red maple */
+100% { color: rgba(255, 183, 77, 0.08); }
+}
+
+h1, p, input, img {
+position: relative;
+z-index: 1;
+}
+
+h1 {
+font-family: 'Montserrat', sans-serif;
+font-size: 2.8rem;
+margin-bottom: 0.5em;
+}
+
+p {
+font-size: 1.2rem;
+max-width: 400px;
+margin-bottom: 2em;
+}
+
+input[type="file"] {
+background: linear-gradient(135deg, #ff8c42, #ffb347);
+color: white;
+padding: 0.8em 1.4em;
+border: none;
+border-radius: 8px;
+font-size: 1rem;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+input[type="file"]:hover {
+transform: scale(1.05);
+box-shadow: 0 4px 15px rgba(255, 140, 66, 0.6);
+}
+
+img#preview {
+display: none;
+margin-top: 1em;
+max-width: 300px;
+border: 2px solid #fdf3e7;
+border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- Animated background text -->
+<div class="background-container">
+Fitted<br>Threads
+</div>
+
+<h1 class="animate__animated animate__bounceInDown">
+Welcome to Fitted Threads
+</h1>
+<p class="animate__animated animate__fadeInUp animate__delay-1s">
+Try on your favorite styles virtually with AI-powered fashion.
+</p>
+
+<!-- Upload button -->
+<input type="file" accept="image/*" capture="environment" id="upload" />
+
+<!-- Image preview -->
+<img id="preview" alt="Image preview will appear here" />
+
+<script>
+const upload = document.getElementById('upload');
+const preview = document.getElementById('preview');
+
+upload.addEventListener('change', () => {
+const file = upload.files[0];
+if (!file) {
+preview.src = '';
+preview.style.display = 'none';
+return;
+}
+const reader = new FileReader();
+reader.onload = () => {
+preview.src = reader.result;
+preview.style.display = 'block';
+};
+reader.readAsDataURL(file);
+});
+</script>
+</body>
+</html>
