@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Animated Landing Page with Upload</title>
+<title>Fitted Threads Landing Page</title>
 
 <!-- Animate.css -->
 <link
@@ -30,7 +30,36 @@ align-items: center;
 font-family: 'Roboto', sans-serif;
 text-align: center;
 padding: 20px;
+position: relative;
+overflow: hidden;
 }
+
+/* Background animated text */
+.background-text {
+position: absolute;
+top: 50%;
+left: -100%;
+font-family: 'Montserrat', sans-serif;
+font-size: 8rem;
+font-weight: bold;
+color: rgba(255, 255, 255, 0.05);
+white-space: nowrap;
+transform: translateY(-50%);
+animation: moveText 15s linear infinite;
+pointer-events: none;
+z-index: 0;
+}
+
+@keyframes moveText {
+0% { left: -100%; }
+100% { left: 100%; }
+}
+
+h1, p, input, img {
+position: relative;
+z-index: 1;
+}
+
 h1 {
 font-family: 'Montserrat', sans-serif;
 font-size: 2.5rem;
@@ -60,8 +89,12 @@ border-radius: 8px;
 </style>
 </head>
 <body>
+
+<!-- Animated background text -->
+<div class="background-text">Fitted Threads</div>
+
 <h1 class="animate__animated animate__bounceInDown">
-Welcome to Your Fashion App
+Welcome to Fitted Threads
 </h1>
 <p class="animate__animated animate__fadeInUp animate__delay-1s">
 Try on your favorite styles virtually with AI-powered fashion.
