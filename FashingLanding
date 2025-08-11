@@ -13,7 +13,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 
 <!-- Google Fonts -->
 <link
-href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto&display=swap"
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,900&family=Roboto&display=swap"
 rel="stylesheet"
 />
 
@@ -38,22 +38,26 @@ overflow: hidden;
 .background-container {
 position: absolute;
 top: 50%;
-right: -100%;
-transform: translateY(-50%) rotate(-8deg);
-font-family: 'Montserrat', sans-serif;
+left: 50%;
+width: max-content;
+transform-origin: center;
+transform: translate(-50%, -50%) rotate(-8deg);
+font-family: 'Playfair Display', serif;
 font-weight: 900;
 font-size: 10rem;
-line-height: 0.9;
+line-height: 1;
 white-space: nowrap;
+text-align: center;
+color: rgba(255, 183, 77, 0.08);
 animation: moveText 18s linear infinite, colorShift 12s ease-in-out infinite alternate;
 pointer-events: none;
 z-index: 0;
 }
 
-/* Moves text from right → left */
+/* Animate text moving right → left */
 @keyframes moveText {
-0% { right: -100%; }
-100% { right: 100%; }
+0% { left: 100%; }
+100% { left: -100%; }
 }
 
 /* Autumn color shifts */
@@ -111,7 +115,7 @@ border-radius: 8px;
 
 <!-- Animated background text -->
 <div class="background-container">
-FITTED<br>THREADS
+Fitted<br>Threads
 </div>
 
 <h1 class="animate__animated animate__bounceInDown">
