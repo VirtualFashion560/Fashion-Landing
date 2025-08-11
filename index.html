@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Animated Landing Page with Upload</title>
+
+<!-- Animate.css -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+body {
+margin: 0;
+min-height: 100vh;
+background: #222;
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-family: 'Roboto', sans-serif;
+text-align: center;
+padding: 20px;
+}
+h1 {
+font-family: 'Montserrat', sans-serif;
+font-size: 2.5rem;
+margin-bottom: 0.5em;
+}
+p {
+font-size: 1.2rem;
+max-width: 400px;
+margin-bottom: 2em;
+}
+input[type="file"] {
+background: #ff4081;
+color: white;
+padding: 0.8em 1.2em;
+border: none;
+border-radius: 8px;
+font-size: 1rem;
+cursor: pointer;
+}
+img#preview {
+display: none;
+margin-top: 1em;
+max-width: 300px;
+border: 2px solid #fff;
+border-radius: 8px;
+}
+</style>
+</head>
+<body>
+<h1 class="animate__animated animate__bounceInDown">
+Welcome to Your Fashion App
+</h1>
+<p class="animate__animated animate__fadeInUp animate__delay-1s">
+Try on your favorite styles virtually with AI-powered fashion.
+</p>
+
+<!-- Upload button -->
+<input type="file" accept="image/*" capture="environment" id="upload" />
+
+<!-- Image preview -->
+<img id="preview" alt="Image preview will appear here" />
+
+<script>
+const upload = document.getElementById('upload');
+const preview = document.getElementById('preview');
+
+upload.addEventListener('change', () => {
+const file = upload.files[0];
+if (!file) {
+preview.src = '';
+preview.style.display = 'none';
+return;
+}
+const reader = new FileReader();
+reader.onload = () => {
+preview.src = reader.result;
+preview.style.display = 'block';
+};
+reader.readAsDataURL(file);
+});
+</script>
+</body>
+</html>
